@@ -10,6 +10,7 @@ IF YOU ARE LOOKING FOR AN EXTRA CHALLENGE, MAKE A RECURSIVE TRIANGLE METHOD
 
 void setup(){
   size(500, 500);
+  
 }
 
 void draw(){
@@ -23,14 +24,38 @@ void draw(){
 }
 
 void recursiveRect(int x, int y, int w, int h, int scale){
-  //fill me out
+   if(x<400){
+   x+=scale;
+   y+=scale;
+   w-=2*scale;
+      h-=2*scale;
+   rect(x,y,w,h);
+     recursiveRect(x, y, w, h, scale);
+  }
+ 
 }
 
 void recursiveEllipse(int x, int y, int w, int h, int scale){
-  //me too
+  int v=3;
+  if(w>100){
+   w-=scale/v;
+   h-=scale/v;
+ 
+   ellipse(x,y,w,h);
+     recursiveEllipse(x, y, w, h, scale);
+  }
 }
 
 //BONUS
 void recursiveTriangle(int x1, int y1, int x2, int y2, int x3, int y3, int scale){
-  //Complete me if you dare!
-}
+  if(x1<90){
+ x1+=scale*2;
+ y1+=scale;
+ x2-=scale*2;
+ y2+=scale;
+
+ y3-=scale*2;
+   triangle(x1, y1, x2,  y2,  x3,  y3);
+     recursiveTriangle(x1, y1, x2,  y2,  x3,  y3,scale);
+  }
+  }
